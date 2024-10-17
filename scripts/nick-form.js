@@ -8,11 +8,12 @@ function load() {
 
 function back(e) {
     e.preventDefault();
+    hideErrors();
     document.getElementById("McFlurrey-Form").style.display = "none";
 }
 
 function validate(e) {
-    hideErrors()
+    hideErrors();
     if(formHasErrors()) {
         e.preventDefault();
     } else {
@@ -40,7 +41,7 @@ function showError(formField, errorId, errorFlag) {
 function formHasErrors() {
     let errorFlag = false
     let regexEmail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
-    let regexPhone = new RegExp(/^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/)
+    let regexPhone = new RegExp(/^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/);
     let username = document.getElementById("username").value;
     if(!regexEmail.test(username) && !regexPhone.test(username)) {
         showError("username", "username_error", errorFlag);
@@ -55,12 +56,12 @@ function formHasErrors() {
 }
 
 function feedback() {
-    let leastFavorite = document.getElementById("McFlurrey-leastFavorite")
-    document.getElementById("feedback").value = ""
+    let leastFavorite = document.getElementById("McFlurrey-leastFavorite");
+    document.getElementById("feedback").value = "";
     if(leastFavorite.value != "") {
-        document.getElementById("McFlurrey-feedback-container").style.display = "block"
+        document.getElementById("McFlurrey-feedback-container").style.display = "block";
     }
     else {
-        document.getElementById("McFlurrey-feedback-container").style.display = "none"
+        document.getElementById("McFlurrey-feedback-container").style.display = "none";
     }
 }
